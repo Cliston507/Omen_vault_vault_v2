@@ -1,0 +1,8 @@
+name: omen_vault_v2
+description: A new Flutter project for Omen Vault.
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+  
