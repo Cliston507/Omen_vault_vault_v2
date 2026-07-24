@@ -31,3 +31,5 @@ dev_dependencies:
   
   
   
+  google_generative_ai: ^0.4.7
+  
