@@ -1,7 +1,6 @@
 dependencies:
   flutter:
-    sdk: flutter
-  local_auth: ^2.1.6
+    sdk: flutter local_auth: ^2.1.6
   cupertino_icons: ^1.0.2
 
 dev_dependencies:
