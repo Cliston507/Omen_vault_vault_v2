@@ -5,9 +5,10 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   
   // Initialize RevenueCat SDK
-  await Purchases.configure(
-    PurchasesConfiguration("YOUR_REVENUECAT_API_KEY"),
-  );
+    await Purchases.configure(PurchasesConfiguration("goog_test_placeholder_key"));
+      await Purchases.logIn("USER_UNIQUE_ID");
+      
+
 
   runApp(const OmenVaultApp());
 }
