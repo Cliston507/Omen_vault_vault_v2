@@ -4,8 +4,8 @@ import 'package:purchases_flutter/purchases_flutter.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   
-  // Initialize RevenueCat SDK
-    await Purchases.configure(PurchasesConfiguration("goog_test_placeholder_key"));
+  await Purchases.configure(PurchasesConfiguration("test_XoCLIphRBnOHVkZeRVmnycNsX1W"));
+
       await Purchases.logIn("USER_UNIQUE_ID");
       
 
