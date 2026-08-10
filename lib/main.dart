@@ -1,12 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:purchases_flutter/purchases_flutter.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   
   await Purchases.configure(PurchasesConfiguration("test_XoCLIphRBnOHVkZeRVmnycNsX1W"));
 
-      await Purchases.logIn("USER_UNIQUE_ID");
+      final user = FirebaseAuth.instance.currentUser;
+if (user != null) {
+  await Purchases.logIn(user.uid);
+}
+
       
 
 
