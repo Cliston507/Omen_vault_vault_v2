@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:purchases_flutter/purchases_flutter.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
+import 'paywall_screen.dart';
+
+
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -26,12 +29,10 @@ class OmenVaultApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Omen Vault',
-      theme: ThemeData.dark(),
-      home: const Scaffold(
-        body: Center(
-          child: Text('Omen Vault v2 Initialized'),
-        ),
-      ),
+      theme: ThemeData.dark(), 
+
+      home: const PaywallScreen(),
+
+   );
     );
-  }
-}
+            
