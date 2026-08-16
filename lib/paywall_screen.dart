@@ -11,7 +11,7 @@ class PaywallScreen extends StatelessWidget {
         title: const Text('Omen Vault Premium'),
         elevation: 0,
       ),
-      body: SafeArea(
+      body: const SafeArea(
         child: RevenueCatUI.paywall(),
       ),
     );
