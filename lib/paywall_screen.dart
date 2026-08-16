@@ -7,7 +7,13 @@ class PaywallScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: RevenueCatUI.paywall(),
+      appBar: AppBar(
+        title: const Text('Omen Vault Premium'),
+        elevation: 0,
+      ),
+      body: SafeArea(
+        child: RevenueCatUI.paywall(),
+      ),
     );
   }
 }
