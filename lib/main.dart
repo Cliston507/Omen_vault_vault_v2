@@ -3,6 +3,7 @@ import 'package:purchases_flutter/purchases_flutter.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 import 'paywall_screen.dart';
+import 'package:memguard/memguard.dart';
 
 
 
@@ -36,3 +37,18 @@ class OmenVaultApp extends StatelessWidget {
    );
     );
             
+class SecurityService {
+  final MemGuardCore _vault = MemGuardCore();
+
+  Future<void> secureStore({required String key, required String value}) async {
+    await _vault.write(key: key, value: value);
+  }
+
+  Future<String?> secureRead({required String key}) async {
+    return await _vault.read(key: key);
+  }
+
+  Future<void> secureWipe({required String key}) async {
+    await _vault.delete(key: key);
+  }
+}
