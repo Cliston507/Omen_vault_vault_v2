@@ -1,13 +1,5 @@
-dependencies:
-  flutter:
-    sdk: flutter local_auth: ^2.1.6
-  cupertino_icons: ^1.0.2
 
-dev_dependencies:
-  flutter_test:
-    sdk: flutter
-  flutter_lints: ^2.0.0
-name: omen_vault_v2
+  name: omen_vault_v2
 description: A new Flutter project for Omen Vault.
 publish_to: 'none'
 version: 1.0.0+1
@@ -16,22 +8,20 @@ environment:
   sdk: '>=3.0.0 <4.0.0'
 
 dependencies:
-  flutter:memguard: ^2.1.4
-
+  flutter:
     sdk: flutter
-  local_auth: ^2.1.6 
-   google_generative_ai: ^0.2.2
-   cupertino_icons: ^1.0.2
-  purchases_flutter: ^8.0.0  
-
+  memguard: ^2.1.4
+  local_auth: ^2.1.6
+  google_generative_ai: ^0.2.2
+  cupertino_icons: ^1.0.2
+  purchases_flutter: ^8.0.0
   purchases_ui_flutter: ^8.0.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^2.0.0
-  
-  
-  
-  google_generative_ai: ^0.4.7
-  
+
+flutter:
+  uses-material-design: true
+
