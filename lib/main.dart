@@ -1,10 +1,13 @@
-l      limport 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'vault_screen.dart';
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-    runApp(const OmenVaultApp());
-    }
+    await Firebase.initializeApp();
+      runApp(const OmenVaultApp());
+      }
+      
 
     class OmenVaultApp extends StatelessWidget {
       const OmenVaultApp({super.key});
