@@ -1,0 +1,68 @@
+import 'package:google_generative_ai/google_generative_ai.dart';
+
+class DispatchService {
+      late final GenerativeModel _model;
+
+        static final FunctionDeclaration _dispatchTool = FunctionDeclaration(
+                'dispatch_quote',
+                    'Dispatches a scoped emergency job or quote to local contractors within radius.',
+                        parameters: {
+                                  'trade': Schema.string(
+                                            description: 'Trade specialty required: roofing, plumbing, electrical, HVAC, etc.',
+                                  ),
+                                        'urgency': Schema.string(
+                                                    description: 'Urgency tier: Emergency (24/7) or Standard.',
+                                        ),
+                                              'estimatedRange': Schema.string(
+                                                        description: 'Estimated price range in USD, e.g. "\$250 - \$400".',
+                                              ),
+                                                    'location': Schema.string(
+                                                                description: 'Target city, neighborhood, or radius extracted from request.',
+                                                    ),
+                        },
+        );
+
+          void initialize(String apiKey) {
+                _model = GenerativeModel(
+                          model: 'gemini-2.5-flash',
+                                apiKey: apiKey,
+                                      tools: [
+                                                Tool(functionDeclarations: [_dispatchTool])
+                                      ],
+                                            systemInstruction: Content.system(
+                                                        'You are the LocalPro Autonomous Dispatch Agent. '
+                                                                'Parse the user input for service trades, damage severity, and location. '
+                                                                        'Always execute the dispatch_quote tool with precise parameters.',
+                                            ),
+                );
+          }
+
+            Future<Map<String, dynamic>?> processRequest(String userPrompt) async {
+                    final chat = _model.startChat();
+                        final response = await chat.sendMessage(Content.text(userPrompt));
+
+                            final functionCalls = response.functionCalls.toList();
+                                if (functionCalls.isNotEmpty) {
+                                          final call = functionCalls.first;
+                                                if (call.name == 'dispatch_quote') {
+                                                            return call.args;
+                                                }
+                                }
+                                    return null;
+            }
+}
+
+                                                }
+                                }
+            }
+                                            )
+                                      ]
+                )
+          }
+                                                    )
+                                              )
+                                        )
+                                  )
+                        }
+        )
+}

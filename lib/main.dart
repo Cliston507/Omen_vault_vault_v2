@@ -1,52 +1,35 @@
-import 'package:flutter/material.dart';
-import 'package:purchases_flutter/purchases_flutter.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:memguard/memguard.dart';
-
-import 'paywall_screen.dart';
+l      limport 'package:flutter/material.dart';
 import 'vault_screen.dart';
 
-void main() async {
+void main() {
   WidgetsFlutterBinding.ensureInitialized();
+    runApp(const OmenVaultApp());
+    }
 
-  await Purchases.configure(
-    PurchasesConfiguration("test_XoCLiphRBnOHVkZeRVmnycNsX1W"),
-  );
+    class OmenVaultApp extends StatelessWidget {
+      const OmenVaultApp({super.key});
 
-  final user = FirebaseAuth.instance.currentUser;
-  if (user != null) {
-    await Purchases.logIn(user.uid);
-  }
+        @override
+          Widget build(BuildContext context) {
+              return MaterialApp(
+                    title: 'Omen Vault',
+                          debugShowCheckedModeBanner: false,
+                                theme: ThemeData(
+                                        brightness: Brightness.dark,
+                                                primarySwatch: Colors.deepPurple,
+                                                        scaffoldBackgroundColor: const Color(0xFF121212),
+                                                                appBarTheme: const AppBarTheme(
+                                                                          backgroundColor: Color(0xFF1E1E1E),
+                                                                                    elevation: 0,
+                                                                                              centerTitle: true,
+                                                                                                      ),
+                                                                                                            ),
+                                                                                                                  home: const VaultScreen(),
+                                                                                                                      );
+                                                                                                                        }
+                                                                                                                        }
 
-  runApp(const OmenVaultApp());
-}
 
-class OmenVaultApp extends StatelessWidget {
-  const OmenVaultApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Omen Vault',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        brightness: Brightness.dark,
-        primarySwatch: Colors.deepPurple,
-        useMaterial3: true,
-      ),
-      home: const VaultScreen(),
-    );
-  }
-}
-
-class SecurityService {
-  final MemGuard _memGuard = MemGuard();
-
-  Future<void> secureStore({required String key, required String value}) async {
-    await _memGuard.write(key: key, value: value);
-  }
-
-  Future<String?> secureRead({required String key}) async {
-    return await _memGuard.read(key: key);
-  }
-}
+                                                                                                                        ,
+                                                                                                                      );
+                                                                                                    
